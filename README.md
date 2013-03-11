@@ -8,7 +8,8 @@ Screenshots
 
 Basic usage
 -----------
-The files you will need: 
+The files you will need:
+ 
 	/src/com/szugyi/dropdown/view/DropDown.java
 	/res/layout/view_drop_down.xml
 	/res/values/attrs.xml
