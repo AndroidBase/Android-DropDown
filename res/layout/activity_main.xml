@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dropdown="http://schemas.android.com/apk/res/com.szugyi.dropdown"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <com.szugyi.dropdown.view.DropDown
+        android:id="@+id/main_countries_dropDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:entries="@array/countries"
+        dropdown:arrowImage="@android:drawable/arrow_down_float"
+        dropdown:titleBackground="@drawable/dropdown_background"
+        dropdown:titleColor="#000000"
+        dropdown:titleText="@string/main_countries" />
+
+    <com.szugyi.dropdown.view.DropDown
+        android:id="@+id/main_cities_dropDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        dropdown:titleText="@string/main_cities" />
+
+</LinearLayout>

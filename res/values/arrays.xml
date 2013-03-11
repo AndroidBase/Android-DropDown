@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="countries">
+        <item>Canada</item>
+        <item>Denmark</item>
+        <item>Hungary</item>
+        <item>Belgium</item>
+        <item>Austria</item>
+    </string-array>
+    <string-array name="cities">
+        <item>Budapest</item>
+        <item>Bukarest</item>
+        <item>Linz</item>
+        <item>Paris</item>
+        <item>New York</item>
+        <item>London</item>
+        <item>Warsaw</item>
+    </string-array>
+</resources>
