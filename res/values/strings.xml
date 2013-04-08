@@ -5,5 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="main_countries">Countries</string>
     <string name="main_cities">Cities</string>
+    <string name="main_show_values">Show values</string>
+    <string name="none">none</string>
 
 </resources>

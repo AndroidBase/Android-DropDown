@@ -1,25 +1,38 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dropdown="http://schemas.android.com/apk/res/com.szugyi.dropdown"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp"
-    android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="8dp" >
 
-    <com.szugyi.dropdown.view.DropDown
-        android:id="@+id/main_countries_dropDown"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:entries="@array/countries"
-        dropdown:arrowImage="@android:drawable/arrow_down_float"
-        dropdown:titleBackground="@drawable/dropdown_background"
-        dropdown:titleColor="#000000"
-        dropdown:titleText="@string/main_countries" />
+        android:orientation="vertical" >
 
-    <com.szugyi.dropdown.view.DropDown
-        android:id="@+id/main_cities_dropDown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        dropdown:titleText="@string/main_cities" />
+        <com.szugyi.dropdown.view.DropDown
+            android:id="@+id/main_countries_dropDown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:entries="@array/countries"
+            dropdown:arrowImage="@android:drawable/arrow_down_float"
+            dropdown:titleBackground="@drawable/dropdown_background"
+            dropdown:titleColor="#000000"
+            dropdown:titleText="@string/main_countries" />
 
-</LinearLayout>
+        <com.szugyi.dropdown.view.DropDown
+            android:id="@+id/main_cities_dropDown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            dropdown:titleText="@string/main_cities" />
+
+        <Button
+            android:id="@+id/main_show_values_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="onClick"
+            android:text="@string/main_show_values" />
+    </LinearLayout>
+
+</ScrollView>

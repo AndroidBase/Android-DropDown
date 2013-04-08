@@ -45,7 +45,7 @@ public class DropDown extends RelativeLayout implements OnClickListener,
 	Context context;
 	int lastClicked = -1;
 	boolean hidden = true;
-	
+
 	public DropDown(Context context) {
 		this(context, null);
 	}
@@ -73,7 +73,7 @@ public class DropDown extends RelativeLayout implements OnClickListener,
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.view_drop_down, this, true);
-		
+
 		title = (TextView) getChildAt(0);
 		title.setText(titleText);
 		title.setOnClickListener(this);
@@ -90,10 +90,12 @@ public class DropDown extends RelativeLayout implements OnClickListener,
 		if (arrowImage != null) {
 			arrow.setImageDrawable(arrowImage);
 		}
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+				RelativeLayout.LayoutParams.WRAP_CONTENT,
+				RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.ALIGN_TOP, R.id.dropDown_title);
 		lp.addRule(RelativeLayout.ALIGN_RIGHT, R.id.dropDown_title);
-		// TODO: Marginokat úgy beállítani, hogy középre kerüljön a nyíl
+		// TODO: Set margin according to the arrow images actual size
 		lp.setMargins(0, 20, 10, 0);
 		arrow.setLayoutParams(lp);
 
@@ -103,12 +105,13 @@ public class DropDown extends RelativeLayout implements OnClickListener,
 			list.setAdapter(new ArrayAdapter<CharSequence>(context,
 					android.R.layout.simple_list_item_1, items));
 		}
-		list.setBackgroundColor(getResources().getColor(R.color.dropdown_list_background_green));
+		list.setBackgroundColor(getResources().getColor(
+				R.color.dropdown_list_background_green));
 		
-//		int[] colors = {0, getResources().getColor(R.color.dropdown_list_divider_blue), getResources().getColor(R.color.dropdown_list_divider_blue), getResources().getColor(R.color.dropdown_list_divider_blue), 0};
-		list.setDivider(new PaintDrawable(getResources().getColor(R.color.dropdown_list_divider_blue)));
+		list.setDivider(new PaintDrawable(getResources().getColor(
+				R.color.dropdown_list_divider_blue)));
 		list.setDividerHeight(4);
-		// Lista elrejtése
+		// Hide the list
 		list.getLayoutParams().height = 0;
 	}
 
@@ -157,7 +160,7 @@ public class DropDown extends RelativeLayout implements OnClickListener,
 
 		hidden = !hidden;
 	}
-	
+
 	private void rotateArrow() {
 		RotateAnimation rotate;
 		if (hidden) {
@@ -218,16 +221,25 @@ public class DropDown extends RelativeLayout implements OnClickListener,
 		if (position == -1) {
 			title.setText(titleText);
 		} else {
-			title.setText(getSelectedItem());
+			title.setText(getSelectedItemString());
 		}
 	}
 
 	public int getSelectedItemPosition() {
 		return lastClicked;
 	}
+	
+	public Object getSelectedItem() {
+		if (lastClicked < 0 || lastClicked > list.getAdapter().getCount()) {
+			return null;
+		}
 
-	public String getSelectedItem() {
-		Object item = list.getAdapter().getItem(lastClicked);
+		return list.getAdapter().getItem(lastClicked);
+	}
+
+	public String getSelectedItemString() {
+		Object item = getSelectedItem();
+
 		if (item != null) {
 			return item.toString();
 		} else {
@@ -264,8 +276,8 @@ public class DropDown extends RelativeLayout implements OnClickListener,
 		}
 
 		v.setVisibility(View.VISIBLE);
-		// !!!!!!!!!!!!!EZ a lényeg. Enélkül 4.0 alatt nem gördül
-		// le!!!!!!!!!!
+		// !!!!!!!!!!!!!This is the secret of the templars. Without this line,
+		// on pre 4.0 devices the animation cannot be seen!!!!!!!!!!
 		((View) v.getParent()).invalidate();
 
 		Animation a = new Animation() {
